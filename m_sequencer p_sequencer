@@ -1,0 +1,23 @@
+https://zhuanlan.zhihu.com/p/436911218
+
+
+m_sequencer本质上是一个uvm_sequencer_base类型的句柄，定义在uvm_sequence_item中，如下源码所示：
+
+  class uvm_sequence_item extends uvm_transaction;
+      ...
+   protected uvm_sequencer_base m_sequencer;
+      ...
+  endclass
+  
+  uvm_sequencer_base是一个底层类
+
+
+wait_for_grant()的作用是让特定的sequence获得sequencer的授权;
+send_request()的作用是将获得授权的sequence的item发送给sequencer;
+wait_for_item_done()的作用是等待driver将获取的item驱动给DUT这个过程结束，即等待item_done完成;
+
+uvm_sequencer_base是例化在uvm_sequence_item中的
+
+
+m_sequencer是定义在sequence的最底层类uvm_sequence_item里的，意味着任何sequence都会自带一个m_sequencer。
+当我们无论是通过`uvm_do_on宏还是seq.start(xxx_sequencer)的方式，UVM都会将用户传入的sequencer绑定到该sequence的m_sequencer。
