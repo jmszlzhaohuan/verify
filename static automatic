@@ -1,0 +1,5 @@
+module、interface、program中定义的task、function默认是static
+在class中的方法默认为automatic的
+
+
+automatic 方法中变量默认为 automatic，static 方法中变量默认为 static，默认方法需要声明变量为 automatic 或者 static。
