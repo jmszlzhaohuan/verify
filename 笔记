@@ -1,0 +1,11 @@
+1.在类里面要声明一个接口(interface)的指针，要加virtual
+
+  interface chnl_intf(input clk, input rstn);
+    ...
+  endinterface
+  
+  class chnl_initiator;
+
+    local virtual chnl_intf intf;
+ 
+ 
